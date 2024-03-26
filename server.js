@@ -18,4 +18,8 @@ app.listen(process.env.PORT, (err)=>{
     console.log(err ? err : "Connecté au serveur");
 })
 
+app.get("*",(req,res)=>{
+    res.redirect('/homepage')
+})
+
 mongoose.connect(process.env.URIBDD)
