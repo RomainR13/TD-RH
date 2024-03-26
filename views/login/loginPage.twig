@@ -1,0 +1,39 @@
+{% extends "../base.twig" %}
+
+{% block header %}
+{% include "../layouts/_header.twig" %}
+
+{% endblock %}
+
+{% block style %}
+
+	<link rel="stylesheet" href="/css/loginPage.css">
+{% endblock %}
+
+{% block main %}
+<main>
+	<section id="sectionLogin">
+		<div>
+			<h2>Connexion à votre compte entreprise</h2>
+		</div>
+		<div>
+			<form id="formContainer" action="/login" method="post">
+				<div class="labelInput">
+					<label for="mail">Email</label>
+					<input class="inputClass" id="mail" type="text" name="mail">
+					{% if error %}
+					<p>{{error.errors.mail.message}}</p>
+					{% endif %}
+				</div>
+				<div class="labelInput">
+					<label for="password">Mot de passe</label>
+					<input class="inputClass" id="password" type="password" name="password">
+				</div>
+				<div>
+					<button id="submitEnterprise" type="submit">Valider</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</main>
+{% endblock %}

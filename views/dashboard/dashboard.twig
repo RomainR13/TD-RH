@@ -1,0 +1,47 @@
+{% extends "/base.twig" %}
+
+{% block header %}
+{% include "../layouts/_header.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/css/dashboard.css">
+{% endblock %}
+
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="sectionEmployee">
+			<div>
+				<h2>Employé</h2>
+			</div>
+			<form action="/dashboard" method="get">
+				<label for="function">Rechercher par fonction</label>
+				<input type="text" name="function">
+			</form>
+			<div id="allEmployee">
+				{% for employee in user.employeeCollection %}
+					<article id="employeeInfo">
+						<div>
+							<img id="imgEmployee" src="/images/uploads/{{employee.image}}" alt="">
+						</div>
+						<div>
+							<h3>{{employee.name}}</h3>
+						</div>
+                        <div>
+                        <p>Fonction au sein de l'entreprise : {{employee.function}}</p>
+                        </div>
+                         <div>
+                        <p>Nombre de blâme : {{employee.blame}}</p>
+                        </div>
+                        <div id="buttonContainer">
+                        <a class="aButton" href="/employeeUpdate/{{employee.id}}">Modifier les informations</a>
+                        <a class="aButton" href="/employeeDelete/{{employee.id}}">Supprimer l'employé</a>
+						<a class="aButton" href="/blameEmployee/{{employee.id}}">Blamer cet employé</a>
+                        </div>
+					</article>
+				{% endfor %}
+			</div>
+		</section>
+	</main>
+{% endblock %}

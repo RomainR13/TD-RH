@@ -1,0 +1,35 @@
+{% block style %}
+	<link rel="stylesheet" href="/css/header.css">
+{% endblock %}
+
+<header>
+	<div>
+		<img src="" alt="">
+	</div>
+	<nav>
+		<ul>
+			{% if user.id %}
+				<li>
+					<a class="aHeader" href="/homepage">ACCUEIL</a>
+				</li>
+				<li>
+					<a class="aHeader" href="/addEmployee">AJOUTER UN EMPLOYE</a>
+				</li>
+				<li>
+					<a class="aHeader" href="/logout">SE DECONNECTER</a>
+				</li>
+			{% else %}
+				<li>
+					<a class="aHeader" href="/homepage">ACCUEIL</a>
+				</li>
+				<li>
+					<a class="aHeader" href="/subscribe">INSCRIPTION</a>
+				</li>
+				<li>
+					<a class="aHeader" href="/login">CONNEXION</a>
+				</li>
+			{% endif %}
+		</ul>
+	</nav>
+
+</header>

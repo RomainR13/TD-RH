@@ -1,0 +1,51 @@
+{% extends "../base.twig" %}
+{% block header %}
+	{% include "../layouts/_header.twig" %}
+
+{% endblock %}
+
+{% block style %}
+	<link rel="stylesheet" href="/css/subscribe.css">
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="sectionCreate">
+			<div>
+				<h2>Création de votre compte entreprise</h2>
+			</div>
+			<div >
+				<form id="formContainer" action="/subscribe" method="post">
+					<div class="labelInput">
+						<label for="name">Nom de l'entreprise</label>
+						<input class="inputClass" id="nameEnterprise" type="text" name="name">
+					</div>
+					<div class="firstLine">
+						<div class="labelInput">
+							<label for="siret">Numéro Siret</label>
+							<input class="inputClass" id="siret" type="number" name="siret"></div>
+						<div class="labelInput">
+							<label for="ceoName">Nom du directeur</label>
+							<input class="inputClass" id="directorName" type="text" name="directorName"></div>
+					</div>
+					<div class="firstLine">
+						<div class="labelInput">
+							<label for="mail">Email</label>
+							<input class="inputClass" id="mail" type="text" name="mail">
+							{% if error %}
+								<p>{{error.errors.mail.message}}</p>
+							{% endif %}
+						</div>
+						<div class="labelInput">
+							<label for="password">Mot de passe</label>
+							<input class="inputClass" id="password" type="password" name="password"></div>
+					</div>
+
+					<div>
+						<button id="submitEnterprise" type="submit">Valider</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+{% endblock %}

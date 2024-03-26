@@ -1,0 +1,53 @@
+{% extends "../base.twig" %}
+
+{% block header %}
+	{% include "../layouts/_header.twig" %}
+
+{% endblock %}
+
+{% block style %}
+	<link rel="stylesheet" href="/css/addEmployee.css">
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="sectionCreate">
+			<div>
+				{% if employee %}
+					<h2>Modifier un employé</h2>
+
+				{% else %}
+					<h2>Ajouter un employé</h2>
+				{% endif %}
+
+			</div>
+			<div>
+				<form id="formContainer" method="post" {% if employee %} action="/employeeUpdate/{{employee.id}}" {% else %} action="/addEmployee" {% endif %} enctype="multipart/form-data">
+					<div class="firstLine">
+						<div class="labelInput">
+							<label for="avatar">Choisir une image...</label>
+							<input id="imgEmployee" type="file" name="image" accept="image/png, image/jpeg" value="{{employee.image}}">
+						</div>
+						<div class="labelInput">
+							<label for="name">Nom</label>
+							<input id="employeeName" type="text" name="name" value="{{employee.name}}">
+						</div>
+					</div>
+					<div class="firstLine">
+						<div class="labelInput">
+							<label for="function">Fonction</label>
+							<input id="function" type="text" name="function" value="{{employee.function}}">
+						</div>
+						<div class="labelInput">
+							<label for="blame">Nombre de blâme</label>
+							<input id="blame" type="number" name="blame" value="{{employee.blame}}">
+						</div>
+					</div>
+					<div>
+						<button id="submitEmployee" type="submit">Ajouter</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+{% endblock %}
